@@ -1,6 +1,17 @@
 """
-Write a function named collatz() that has one parameter named number. 
-If number is even, then collatz() should print number // 2 and return this value. 
-If number is odd, then collatz() should print and return 3 * number + 1. 
+The Collatz Sequence
+"""
 
-Then write a program that lets the user type in an integer an that keeps calling collatz() on that number until the function 
+def collatz(number):
+    if number % 2 == 0:
+        return number // 2
+    
+    elif number % 2 == 1:
+        return 3 * number + 1
+
+print("Enter a number:")
+number = int(input())
+
+while number != 1:
+    number = collatz(number)
+    print(int(collatz(number)))
