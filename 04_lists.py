@@ -140,3 +140,54 @@ Augmented assignment operators
 """
 Methods
 """
+# A method is the same thing as a function, except it is "called on" a value. 
+# E.g. if a list value were stored in spam, you would call the index() list method
+# So, spam.index('hello') 
+
+"""
+Finding a value in a list with the index() method
+"""
+# spam = ['cat', 'dog', 'bat']
+# spam.index('dog') == 1 
+
+"""
+Adding values to lists with the append() and insert() methods
+"""
+# spam.append('element')
+# spam.remove('element')
+
+"""
+Sorting the values in a list with the sort() method
+"""
+
+"""
+Strings can be considered a list of characters
+"""
+name = 'NEATO!'
+for i in name:
+    print('* * * ' + i + ' * * *')
+
+
+"""
+Mutable and immutable data types
+"""
+# Lists are mutable. They can have values added, removed, or changed. 
+# Strings are immutable. They cannot be changed. Trying to reassign a single character in a string results with TypeError
+# The proper way to 'mutate' a string is to use slicing and concatenation 
+
+"""
+The tuple data type
+"""
+# Tuples are almost like lists, but there are some differences. 
+# Tuples are typed with () instead of []
+# Tuples are immutable while lists are mutable 
+# Tuple with just one value needs a comma inside the () => type(('hello',))
+
+# You can use tuples to convey to anyone reading your code that you don’t intend for that sequence of values to change. If you need an ordered sequence of values that never changes, use a tuple. A second benefit of using tuples instead of lists is that, because they are immutable and their contents don’t change, Python can implement some optimizations that make code using tuples slightly faster than code using lists.
+
+"""
+References
+"""
+# Variables store values separately
+# Lists are assigned references. A reference is a value that points to some bit of data, and a list reference is a value that points to a list. 
+
