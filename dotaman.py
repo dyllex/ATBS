@@ -1,16 +1,143 @@
 import random
 import sys
 
+# Initialize global variables
+guesses = 6
+guessed = [' ', '-', "'"]
+streak = 1
+
+# List of all Dota 2 heroes
+words = [
+    'abaddon',
+    'alchemist', 
+    'ancient apparition', 
+    'anti-mage', 
+    'arc warden', 
+    'axe', 
+    'bane', 
+    'batrider', 
+    'beastmaster', 
+    'bloodseeker', 
+    'bounty hunter', 
+    'brewmaster', 
+    'bristleback', 
+    'broodmother', 
+    'centaur warrunner', 
+    'chaos knight', 
+    'chen', 
+    'clinkz', 
+    'clockwerk', 
+    'crystal maiden', 
+    'dark seer', 
+    'dazzle', 
+    'death prophet', 
+    'disruptor', 
+    'doom', 
+    'dragon knight', 
+    'drow ranger', 
+    'earth spirit', 
+    'earthshaker', 
+    'elder titan', 
+    'ember spirit', 
+    'enchantress', 
+    'enigma', 
+    'faceless void', 
+    'gyrocopter', 
+    'huskar', 
+    'invoker', 
+    'io', 
+    'jakiro', 
+    'juggernaut', 
+    'keeper of the light', 
+    'kunkka', 
+    'legion commander', 
+    'leshrac', 
+    'lich', 
+    'lifestealer', 
+    'lina', 
+    'lion', 
+    'lone druid', 
+    'luna', 
+    'lycan', 
+    'magnus', 
+    'medusa', 
+    'meepo', 
+    'mirana',
+    'moneky king',
+    'morphling', 
+    'naga siren', 
+    "nature's prophet",
+    'necrophos',
+    'night stalker', 
+    'nyx assassin', 
+    'ogre magi',
+    'omniknight',
+    'oracle',
+    'outworld devourer',
+    'phatom assassin', 
+    'phantom lancer', 
+    'phoenix', 
+    'puck', 
+    'pudge', 
+    'pugna', 
+    'queen of pain', 
+    'razor', 
+    'riki', 
+    'rubick', 
+    'sand king', 
+    'shadow demon', 
+    'shadow fiend', 
+    'shadow shaman', 
+    'silencer', 
+    'skywrath mage', 
+    'slardar', 
+    'slark', 
+    'sniper', 
+    'spectre', 
+    'spirit breaker', 
+    'storm spirit', 
+    'sven', 
+    'techies', 
+    'templar assassin', 
+    'terrorblade', 
+    'tidehunter', 
+    'timbersaw', 
+    'tinker',
+    'tiny', 
+    'treant protector', 
+    'troll warlord', 
+    'tusk', 
+    'underlord', 
+    'undying', 
+    'ursa', 
+    'vengeful spirit', 
+    'venomancer', 
+    'viper', 
+    'visage',
+    'warlock', 
+    'weaver', 
+    'windranger', 
+    'winter wyvern', 
+    'witch doctor', 
+    'wraith king', 
+    'zeus'
+    ]
+
 print("You have just entered a game of 'Dotaman'!! It's just like 'Hangman' but with Dota 2 heroes! If you don't know how to play 'Hangman', use Google or ask a friend. The game is simple enough, so buckle up and let's start!")
 print('')
 
+def new_word(self):
+    word = words[random.randint(range(len(words)))]
+    words.remove(word)
+    for char in word:
+        if char not in [' ', '-', "'"]:
+            print(' __ ', end='')
+        else:
+            print(' %s ' %char, end='')
 
-def game_manager(streak):
-    if streak > 0:
-        dotaman():
-
-def game_status(guesses):
+def game_manager(guesses, streak):
     if guesses == 999:
+        killstreak(streak)
         streak += 1
         guesses = 6
     elif guesses == 0:
@@ -19,144 +146,10 @@ def game_status(guesses):
         sys.exit()
     elif guesses > 0:
         print("You have %s guesses remaining." %guesses)
-        print("Please guess a letter.")    
-
+        print("Please guess a letter.")
+    
 
 def dotaman():
-    # Hero names
-    words = [
-        'abaddon',
-        'alchemist', 
-        'ancient apparition', 
-        'anti-mage', 
-        'arc warden', 
-        'axe', 
-        'bane', 
-        'batrider', 
-        'beastmaster', 
-        'bloodseeker', 
-        'bounty hunter', 
-        'brewmaster', 
-        'bristleback', 
-        'broodmother', 
-        'centaur warrunner', 
-        'chaos knight', 
-        'chen', 
-        'clinkz', 
-        'clockwerk', 
-        'crystal maiden', 
-        'dark seer', 
-        'dazzle', 
-        'death prophet', 
-        'disruptor', 
-        'doom', 
-        'dragon knight', 
-        'drow ranger', 
-        'earth spirit', 
-        'earthshaker', 
-        'elder titan', 
-        'ember spirit', 
-        'enchantress', 
-        'enigma', 
-        'faceless void', 
-        'gyrocopter', 
-        'huskar', 
-        'invoker', 
-        'io', 
-        'jakiro', 
-        'juggernaut', 
-        'keeper of the light', 
-        'kunkka', 
-        'legion commander', 
-        'leshrac', 
-        'lich', 
-        'lifestealer', 
-        'lina', 
-        'lion', 
-        'lone druid', 
-        'luna', 
-        'lycan', 
-        'magnus', 
-        'medusa', 
-        'meepo', 
-        'mirana',
-        'moneky king',
-        'morphling', 
-        'naga siren', 
-        "nature's prophet",
-        'necrophos',
-        'night stalker', 
-        'nyx assassin', 
-        'ogre magi',
-        'omniknight',
-        'oracle',
-        'outworld devourer',
-        'phatom assassin', 
-        'phantom lancer', 
-        'phoenix', 
-        'puck', 
-        'pudge', 
-        'pugna', 
-        'queen of pain', 
-        'razor', 
-        'riki', 
-        'rubick', 
-        'sand king', 
-        'shadow demon', 
-        'shadow fiend', 
-        'shadow shaman', 
-        'silencer', 
-        'skywrath mage', 
-        'slardar', 
-        'slark', 
-        'sniper', 
-        'spectre', 
-        'spirit breaker', 
-        'storm spirit', 
-        'sven', 
-        'techies', 
-        'templar assassin', 
-        'terrorblade', 
-        'tidehunter', 
-        'timbersaw', 
-        'tinker',
-        'tiny', 
-        'treant protector', 
-        'troll warlord', 
-        'tusk', 
-        'underlord', 
-        'undying', 
-        'ursa', 
-        'vengeful spirit', 
-        'venomancer', 
-        'viper', 
-        'visage',
-        'warlock', 
-        'weaver', 
-        'windranger', 
-        'winter wyvern', 
-        'witch doctor', 
-        'wraith king', 
-        'zeus'
-        ]
-    # Hero name is chosen at random    
-    word = words[random.randint(range(len(words)))]
-    # That hero name is removed from the pool
-    words.remove(word)
-
-    # Hero name is displayed as ' __ ' and special characters 
-    for char in word:
-        if char not in [' ', '-', "'"]:
-            print(' __ ', end='')
-        else:
-            print(' %s ' %char, end='')
-
-    # Initial guesses set to 6
-    guesses = 6
-    guessed = [' ', '-', "'"]
-    streak = 0
-
-
     while True:
         guess = input()
         count = 0
@@ -195,9 +188,16 @@ def killstreak(streak):
         print('GODLIKE!')
     elif streak >= 10:
         print('BEYOND GODLIKE!!')
+
     print('Now guess the next hero! Only %s remaining!' %len(words))
+    
     if len(words) == 0:
         print('HOLY SHIT! You beat the entire game! You are a Dotaman Master! <3')
+
+# Initialize game
+new_word()
+dotaman()
+
 
 sys.exit()
 
