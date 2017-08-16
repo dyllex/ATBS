@@ -132,10 +132,15 @@ def game_status(guesses):
         sys.exit()
     elif guesses > 0:
         print("You have %s guesses remaining." %guesses)
-        print("Please guess a letter.")
+        print("Please guess a letter.")    
 
+
+for char in word:
+    print(' __ ', end='')
+print('')
 guesses = 6
 guessed = [' ', '-', "'"]
+
 while True:
     game_status(guesses)
     guess = input()
@@ -154,4 +159,4 @@ while True:
     guesses -= 1
     print('')
 
-    
+sys.exit()
