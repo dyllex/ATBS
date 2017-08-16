@@ -136,7 +136,11 @@ def game_status(guesses):
 
 
 for char in word:
-    print(' __ ', end='')
+    if char not in [' ', '-', "'"]:
+        print(' __ ', end='')
+    else:
+        print(' %s ' %char)
+
 print('')
 guesses = 6
 guessed = [' ', '-', "'"]
@@ -160,3 +164,7 @@ while True:
     print('')
 
 sys.exit()
+
+# Next features
+# 1. game repeats, removes name from list
+# 2. Keep track of streaks like secret shop quiz
