@@ -1,4 +1,5 @@
 import random
+import sys
 
 words = ['cat', 'dog', 'teacher', 'medicine', 'explorer', 'prestige', 'museum', 'mountain', 'hurricane', 'cyclone', 'rain', 'car', 'turtle', 'space', 'universe', 'meteor', 'spiderman']
 
@@ -10,9 +11,11 @@ print('')
 def game_status(guesses):
     if set(word) == set(guessed):
         print('You guessed it!! Congrats on winning!')
+        sys.exit()
     elif guesses == 0:
         print("You're all out of guesses! The correct answer was '%s'." %word)
         print("Better luck next time!!")
+        sys.exit()
     elif guesses > 0:
         print("You have %s guesses remaining." %guesses)
         print("Please guess a letter.")
