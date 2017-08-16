@@ -119,11 +119,11 @@ words = [
 
 word = words[random.randint(0, len(words)-1)]
 
-print("You have just entered a game of 'Hangman'!! If you don't know how to play, use Google or ask a friend. The game is simple enough, so buckle up and let's start!")
+print("You have just entered a game of 'Dotaman'!! It's just like 'Hangman' but with Dota 2 heroes! If you don't know how to play 'Hangman', use Google or ask a friend. The game is simple enough, so buckle up and let's start!")
 print('')
 
 def game_status(guesses):
-    if set(word) == set(guessed):
+    if guesses == 999:
         print('You guessed it!! Congrats on winning!')
         sys.exit()
     elif guesses == 0:
@@ -136,17 +136,19 @@ def game_status(guesses):
 
 guesses = 6
 guessed = [' ', '-', "'"]
-while guesses >= 0:
+while True:
     game_status(guesses)
-    if guesses == 0:
-        break
     guess = input()
+    count = 0
     if guess in word:
         guesses += 1
         guessed.append(guess)
     for char in word:
         if char in guessed:
-            print('[%s]' %char.upper(), end='')
+            print(' %s ' %char.upper(), end='')
+            count += 1
+            if count == len(word):
+                guesses = 1000
         else:
             print(' __ ', end='')
     guesses -= 1
