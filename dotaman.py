@@ -139,7 +139,7 @@ for char in word:
     if char not in [' ', '-', "'"]:
         print(' __ ', end='')
     else:
-        print(' %s ' %char)
+        print(' %s ' %char, end='')
 
 print('')
 guesses = 6
