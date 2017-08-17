@@ -154,7 +154,10 @@ def game_manager(guesses):
             print("Better luck next time!! You guessed %s hero correctly!" %streak)
         else:
             print("Better luck next time!! You guessed %s heroes correctly!" %streak)
-        sys.exit()
+        if raw_input("Play again? Hit 'enter' to play again or any other key to quit.") == '':
+            dotaman()
+        else:
+            sys.exit()
     elif guesses > 0:
         print('')
         print("You have %s guesses remaining." %guesses)
