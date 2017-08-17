@@ -63,7 +63,7 @@ words = [
     'medusa', 
     'meepo', 
     'mirana',
-    'moneky king',
+    'monkey king',
     'morphling', 
     'naga siren', 
     "nature's prophet",
