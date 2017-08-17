@@ -138,6 +138,8 @@ def new_word():
         else:
             print(' %s ' %char, end='')
     print('')
+    print('')
+    print('')
     return word
 
 def game_manager(guesses):
@@ -148,11 +150,16 @@ def game_manager(guesses):
         dotaman()
     elif guesses == 0:
         print("You're all out of guesses! The correct answer was '%s'." %word)
-        print("Better luck next time!! You guessed %s heroes correctly!" %streak)
+        if streak == 1:
+            print("Better luck next time!! You guessed %s hero correctly!" %streak)
+        else:
+            print("Better luck next time!! You guessed %s heroes correctly!" %streak)
         sys.exit()
     elif guesses > 0:
+        print('')
         print("You have %s guesses remaining." %guesses)
         print("Please guess a letter.")
+        print('')
     
 
 def dotaman():
@@ -162,6 +169,7 @@ def dotaman():
     guessed = [' ', '-', "'"]
     while True:
         guess = input()
+        print('')
         count = 0
         if guess in word:
             guesses += 1
