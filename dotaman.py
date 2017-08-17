@@ -5,6 +5,7 @@ import sys
 guesses = 6
 guessed = [' ', '-', "'"]
 streak = 1
+word = ''
 
 # List of all Dota 2 heroes
 words = [
@@ -125,21 +126,26 @@ words = [
 
 print("You have just entered a game of 'Dotaman'!! It's just like 'Hangman' but with Dota 2 heroes! If you don't know how to play 'Hangman', use Google or ask a friend. The game is simple enough, so buckle up and let's start!")
 print('')
+print("You have %s guesses remaining." %guesses)
+print("Please guess a letter.")
 
-def new_word(self):
-    word = words[random.randint(range(len(words)))]
+def new_word():
+    word = words[random.randint(0, len(words)-1)]
     words.remove(word)
     for char in word:
         if char not in [' ', '-', "'"]:
             print(' __ ', end='')
         else:
             print(' %s ' %char, end='')
+    print('')
+    return word
 
 def game_manager(guesses, streak):
     if guesses == 999:
         killstreak(streak)
         streak += 1
         guesses = 6
+        dotaman(guesses)
     elif guesses == 0:
         print("You're all out of guesses! The correct answer was '%s'." %word)
         print("Better luck next time!!")
@@ -149,7 +155,8 @@ def game_manager(guesses, streak):
         print("Please guess a letter.")
     
 
-def dotaman():
+def dotaman(guesses):
+    new_word()
     while True:
         guess = input()
         count = 0
@@ -166,6 +173,7 @@ def dotaman():
                 print(' __ ', end='')
         guesses -= 1
         print('')
+    game_manager()
 
 def killstreak(streak):
     if streak == 1:
@@ -195,8 +203,7 @@ def killstreak(streak):
         print('HOLY SHIT! You beat the entire game! You are a Dotaman Master! <3')
 
 # Initialize game
-new_word()
-dotaman()
+dotaman(guesses)
 
 
 sys.exit()
