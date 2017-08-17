@@ -3,6 +3,7 @@ import sys
 
 # Initialize global variables
 def init():
+    global words
     global guesses
     guesses = 6
     # global guessed
@@ -18,9 +19,10 @@ def init():
     print('')
     print('')
     
+    words = list(all_names)
     dotaman()
 # List of all Dota 2 heroes
-words = [
+all_names = [
     'abaddon',
     'alchemist', 
     'ancient apparition', 
@@ -135,6 +137,7 @@ words = [
     'wraith king', 
     'zeus'
     ]
+words = []
 
 def new_word():
     global word
