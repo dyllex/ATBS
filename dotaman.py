@@ -89,7 +89,7 @@ all_names = [
     'omniknight',
     'oracle',
     'outworld devourer',
-    'phatom assassin', 
+    'phantom assassin', 
     'phantom lancer', 
     'phoenix', 
     'puck', 
